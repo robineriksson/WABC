@@ -1,0 +1,18 @@
+## Robin Eriksson 2019
+
+##' Model0
+##' The first model, a toy example.
+##' y_{i+1} = y_{i} + N(theta, 1)
+##' @export
+##' @param N the length of the output data
+##' @param M the number of realisations
+##' @param theta the model parameter
+model0 <- function(N = 50, M = 1, theta) {
+    y <- matrix(0, nrow = N, ncol = M)
+    for(m in seq_len(M)) {
+        for(n in 2:N) {
+            y[n,m] <- y[n-1,m] + rnorm(0, mean = theta, sd = 1)
+            }
+    }
+    return(y)
+}
